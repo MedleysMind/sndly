@@ -4,6 +4,8 @@ function generateRandomColor()
     return randomColor;
     //random color will be freshly served
 }
+
+//97 = 'a'; 122 = 'z';
 var keyData = {
   a: {
     color: generateRandomColor(),
