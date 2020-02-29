@@ -1,5 +1,3 @@
-//array to hold newly created circles
-var circles = [];
 function generateRandomColor() {
   //creates random number assigned to rgb
   var randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
