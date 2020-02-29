@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="node_modules/paper/dist/paper-full.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="repos/howler/dist/howler.min.js"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="/js/data.js"></script>
+    <script src="/js/shapes.js"></script>
+    <script type="text/paperscript" canvas="myCanvas">
+var circles = [];
+function onKeyDown(event) {
+  if(keyData[event.key]){
+  var maxPoint = new Point(view.size.width, view.size.height);
+  // var middlePoint = (maxPoint / 2);
+  var randomPoint = Point.random();
+  var point = maxPoint * randomPoint;
+  var newCircle = new Path.Circle(point, 500)
+  newCircle.fillColor = keyData[event.key].color;
+  keyData[event.key].sound.play();
+  circles.push(newCircle);
+  }}
+  function onFrame(event){
+    for(var i = 0; i < circles.length; i++){
+     circles[i].fillColor.hue += 1;
+     circles[i].scale(.9);
+     if(circles[i].area < 1){
+      circles[i].remove(); // remove the circle from the canvas
+      circles.splice(i, 1); // remove the circle from the array
+      // console.log(circles);
+    }
+    }
+  }
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" resize></canvas>
+  </body>
+</html>
